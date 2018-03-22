@@ -1,4 +1,4 @@
-# Golang Slice与Map
+# Golang Slice & Map特性与底层实现
 
 ## Slice
 与数组在声明时的区别仅为数组需要指定数目, 而slice不需要. <br>
@@ -39,3 +39,37 @@ for _, v := range slice {
 ```
 
 #### 关于[]byte 与 string
+string在`src/runtime/string.go`的声明如下:
+```Go
+type stringStruct struct {
+    str unsafe.Pointer
+    len int
+}
+```
+可以看到，同slice一样，string底层也是一个数组。
+string 指向的数组是只读的(`个人猜测是golang中string没有实现像slice一样直接根据向index来更改字符的机制，又在重新赋值时新开一个字符串而不是修改之前的`)，所以string字符串是不可更改的.
+
+[]byte和string是可以相互转换的，但是在相互转换时默认的实现不会使用原有的空间，而都是重新分配内存。因为string是不可以改变的，如果将string转换为[]byte之后且不重新分配，那么此时他们就共用内存，一旦slice修改了底层字符，会导致程序Down掉.
+
+<b> 实际运用中应当如何取舍string与[]byte? <b>
+
++ string可以直接比较，而[]byte不可以，所以[]byte不可以当map的key值。
++ 因为无法修改string中的某个字符，需要粒度小到操作一个字符时，用[]byte。
++ string值不可为nil，所以如果你想要通过返回nil表达额外的含义，就用[]byte。
++ []byte切片这么灵活，想要用切片的特性就用[]byte。
++ 需要大量字符串处理的时候用[]byte，性能好很多。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
