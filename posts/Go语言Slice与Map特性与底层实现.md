@@ -83,13 +83,13 @@ string 指向的数组是只读的(`个人猜测是golang中string没有实现�
 Map底层实现为哈希表。
 
 #### 声明
-```
+```Go
 m := make(map[keytype]valuetype)
 m[key1] = value1
 m[key2] = value2
 ```
 或
-```
+```Go
 m := map[string]int {
      "alice":1,
      "belly":2.
@@ -97,7 +97,7 @@ m := map[string]int {
 ```
 
 #### 遍历
-```
+```Go
 for key, value := range m {
      fmt.Println(key, ":", value)
 }
@@ -107,7 +107,7 @@ for key, value := range m {
 #### 判空
 map在获取元素时若其还未曾加入到map中，不会报错而是会返回0（或其他value type的零值）,因此就需要另外的机制来区分是本来值为0还是未曾加入到map中<br>
 因此map在获取元素时还会在最后多返回一个参数来标志是否在map中.
-```
+```Go
 fakekey, ok := m["fakekey"]
 if !ok {
      // handle func
@@ -122,7 +122,7 @@ if fakekey, ok := m["fakekey"]; !ok {
 #### 使用slice作为map的key
 Map的Key只能为不可变的元素，因此slice不能直接作为map的key。
 常采取的手段是使用一个函数将slice来映射成字符串，并保证slice不重复字符串也就不重复来使用.
-```
+```Go
 // 设转换函数为strs()
 m := make(map[string]int)
 m[strs(slice1)] = 1
@@ -132,7 +132,7 @@ m[strs(slice2)] = 2
 
 #### 底层结构
 HashMap
-```
+```Go
 type hmap struct {
 	count     int // # 元素个数
 	flags     uint8
