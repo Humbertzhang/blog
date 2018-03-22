@@ -70,7 +70,7 @@ string 指向的数组是只读的(`个人猜测是golang中string没有实现�
 
 []byte和string是可以相互转换的，但是在相互转换时默认的实现不会使用原有的空间，而都是重新分配内存。因为string是不可以改变的，如果将string转换为[]byte之后且不重新分配，那么此时他们就共用内存，一旦slice修改了底层字符，会导致程序Down掉.
 
-<b> 实际运用中应当如何取舍string与[]byte? <b>
+<b> 实际运用中应当如何取舍string与[]byte? </b>
 
 + string可以直接比较，而[]byte不可以，所以[]byte不可以当map的key值。
 + 因为无法修改string中的某个字符，需要粒度小到操作一个字符时，用[]byte。
@@ -158,10 +158,8 @@ type hmap struct {
 也因此对于map的迭代是安全的，因为并不是删除掉元素后rehash,而是仅仅将元素设为不可访问，因此元素顺序不会收到影响.<br>
 
 
-
-
-
-Reference: <br>
+***
+#### Reference: <br>
 https://sheepbao.github.io/post/golang_byte_slice_and_string <br>
 https://blog.yiz96.com/golang-map/ <br>
 
