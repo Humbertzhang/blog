@@ -128,8 +128,68 @@ sed -i 's/quay.io\/coreos\/flannel:v0.8.0-amd64/registry.cn-hangzhou.aliyuncs.co
 kubectl --namespace kube-system apply -f ./kube-flannel.yml
 ```
 之后可以通过`kubectl get nodes`来查看集群初始化是否成功.<br>
-使用 `kubectl get pod -n kube-system` 来查看系统pod是否初始化成功了. <br>
+使用 `kubectl get pod -n kube-system` 来查看各个系统pod是否初始化成功. <br>
+
+***
+这里说一下其他的一些经验。
+
+## 干掉阿里云监控
+因为阿里云的服务器上都是有监控进程的，如果你做科学上网之类的事情很可能就会被打电话警告(亲身经历 = =),所以如果有翻墙的需求的话，一定要提前把阿里云的监控干掉。
+
+#### 卸载阿里云盾监控
+```
+wget http://update.aegis.aliyun.com/download/uninstall.sh
+chmod +x uninstall.sh
+./uninstall.sh
+
+wget http://update.aegis.aliyun.com/download/quartz_uninstall.sh
+chmod +x quartz_uninstall.sh
+./quartz_uninstall.sh
+```
+
+#### 删除残留
+```
+pkill aliyun-service
+rm -fr /etc/init.d/agentwatch /usr/sbin/aliyun-service
+rm -rf /usr/local/aegis*
+```
+
+#### 屏蔽云盾 IP
+```
+iptables -I INPUT -s 140.205.201.0/28 -j DROP
+iptables -I INPUT -s 140.205.201.16/29 -j DROP
+iptables -I INPUT -s 140.205.201.32/28 -j DROP
+iptables -I INPUT -s 140.205.225.192/29 -j DROP
+iptables -I INPUT -s 140.205.225.200/30 -j DROP
+iptables -I INPUT -s 140.205.225.184/29 -j DROP
+iptables -I INPUT -s 140.205.225.183/32 -j DROP
+iptables -I INPUT -s 140.205.225.206/32 -j DROP
+iptables -I INPUT -s 140.205.225.205/32 -j DROP
+iptables -I INPUT -s 140.205.225.195/32 -j DROP
+iptables -I INPUT -s 140.205.225.204/32 -j DROP
+```
+
+## 将socks5代理转换为http代理，为go get提供支持
+因为想要用Golang对k8s做一下二次而发，所以就需要go get 来下载一些包，而go get走的是http代理，并不是socks5代理，因此需要将socks5代理转换为http代理来为其提供支持。此处采用privoxy来简单地将socks5的代理转换为http代理。
+安装privoxy <br>
+`yum install privoxy`  <br>
+配置privoxy <br> 
+`vim /etc/privoxy/config` <br>
+添加下面这一行 <br>
+`forward-socks5 / 127.0.0.1:1080 ` <br>
+forward-socks5代表转发到socks5代理，/代表所有的URL都转发(也可以在这里写url patten)，127.0.0.1:1080是socks代理地址.
+
+启动privoxy <br>
+
+`/etc/init.d/privoxy restart`
+
+服务默认监听在本地127.0.0.1:8118上 <br>
 
 ***
 
-
+Reference: <br>
++ http://www.yunweipai.com/archives/20884.html 
++ http://www.ttlsa.com/linux/privoxy-convert-socks-proxy-to-http/
++ https://github.com/ssrpanel/SSRPanel/wiki/%E5%8D%B8%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%BE%E7%9B%91%E6%8E%A7&%E5%B1%8F%E8%94%BD%E4%BA%91%E7%9B%BEIP#%E5%8D%B8%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%BE%E7%9B%91%E6%8E%A7
++ http://zxc0328.github.io/2017/10/26/k8s-setup-1-7/#more
++ https://blog.jsjs.org/?p=414
