@@ -110,7 +110,7 @@ kubeadm init  --kubernetes-version=v1.7.2 --pod-network-cidr=10.244.0.0/12
 此处使用 systemctl status kubelet 与 journalctl 来查看报错.<br>
 在[之前写的一个博客](https://humbertzhang.github.io/2018/02/21/%E5%88%A9%E7%94%A8Kubeadm%E5%90%91Kubernetes%E9%9B%86%E7%BE%A4%E5%8A%A0%E5%85%A5%E8%8A%82%E7%82%B9/)的Step3中简述了如何解决这个问题。
 
-如果kubeadm 初始化失败，为了清除掉其他的数据，通过
+如果kubeadm 初始化失败，为了清除掉其他的数据，通过 `kubeadm reset` 和 重启kubelet来重置。
 
 ## 配置kubectl的kubeconfig
 ```shell
