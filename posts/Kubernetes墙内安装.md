@@ -80,7 +80,7 @@ done
 ```shell
 cat > /etc/systemd/system/kubelet.service.d/20-pod-infra-image.conf <<EOF
 [Service]
-Environment="KUBELET_EXTRA_ARGS=--pod-infra-container-image=registry.cn-hangzhou.aliyuncs.com/szss_k8s/pause-amd64:3.0"
+Environment="KUBELET_EXTRA_ARGS=--pod-infra-container-image=mirrorgooglecontainers/pause-amd64:3.0"
 EOF
 ```
 
@@ -99,7 +99,7 @@ systemctl start kubelet
 ## kubeadm创建集群
 此处使用了别人上传好的etcd镜像, --pod-network-cidr不需要修改.<br>
 ```
-export KUBE_REPO_PREFIX="registry.cn-hangzhou.aliyuncs.com/szss_k8s"
+export KUBE_REPO_PREFIX="mirrorgooglecontainers"
 export KUBE_ETCD_IMAGE="registry.cn-hangzhou.aliyuncs.com/szss_k8s/etcd-amd64:3.0.17"
 kubeadm init  --kubernetes-version=v1.7.2 --pod-network-cidr=10.244.0.0/12
 ```
