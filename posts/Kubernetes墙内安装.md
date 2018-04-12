@@ -176,12 +176,12 @@ iptables -I INPUT -s 140.205.225.204/32 -j DROP
 配置privoxy <br> 
 `vim /etc/privoxy/config` <br>
 添加下面这一行 <br>
-`forward-socks5 / 127.0.0.1:1080 ` <br>
+`forward-socks5 / 127.0.0.1:1080 . `  注意最后还有一个 . <br>
 forward-socks5代表转发到socks5代理，/代表所有的URL都转发(也可以在这里写url patten)，127.0.0.1:1080是socks代理地址.
 
-启动privoxy <br>
+重新启动privoxy <br>
 
-`/etc/init.d/privoxy restart`
+`service privoxy restart`
 
 服务默认监听在本地127.0.0.1:8118上 <br>
 
