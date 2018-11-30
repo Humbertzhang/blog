@@ -1,5 +1,5 @@
 # HumbertZhang's blog
-[Dumped Blog](http://humbertzhang.github.io)
+之前废弃的博客：[Dumped Blog](http://humbertzhang.github.io)
 
 
 # About
