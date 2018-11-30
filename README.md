@@ -6,6 +6,7 @@
 Backend Developer in MuxiStudio @ CCNU Wuhan China
 
 # Archive
+`[2018-11-30]`[Python异步模型](https://github.com/Humbertzhang/blog/blob/master/posts/Python%E5%BC%82%E6%AD%A5%E6%A8%A1%E5%9E%8B.md)  <br>
 `[2018-11-16]` [Fluent Python: 关于yield from的理解](https://github.com/Humbertzhang/blog/blob/master/posts/Fluent%20Python:%20%E5%85%B3%E4%BA%8EYield%20From%E7%9A%84%E7%90%86%E8%A7%A3.md) <br>
 `[2018-07-18]` [二分|前缀和|尺取|DFS|BFS|总结.](https://github.com/Humbertzhang/blog/blob/master/yosts/%E4%BA%8C%E5%88%86%7C%E5%89%8D%E7%BC%80%E5%92%8C%7C%E5%B0%BA%E5%8F%96%7CDFS%7CBFS%7C%E6%80%BB%E7%BB%93.md) <br>
 `[2018-04-12]`[Kubernetes墙内安装指南](https://github.com/Humbertzhang/blog/blob/master/posts/Kubernetes%E5%A2%99%E5%86%85%E5%AE%89%E8%A3%85.md) <br>
