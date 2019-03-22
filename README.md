@@ -1,11 +1,9 @@
 # HumbertZhang's blog
-之前废弃的博客：[Dumped Blog](http://humbertzhang.github.io)
 
-
-# About
+## About
 Backend Developer in MuxiStudio @ CCNU Wuhan China
 
-# Archive
+## Archive
 `[2019-03-22]`[HTTP速览](https://github.com/Humbertzhang/blog/blob/master/posts/HTTP%E9%80%9F%E8%A7%88.md) <br>
 `[2019-03-17]`[TCP&UDP速览](https://github.com/Humbertzhang/blog/blob/master/posts/TCPUDP%E9%80%9F%E8%A7%88.md) <br>
 `[2018-11-30]`[Python异步模型](https://github.com/Humbertzhang/blog/blob/master/posts/Python%E5%BC%82%E6%AD%A5%E6%A8%A1%E5%9E%8B.md)  <br>
