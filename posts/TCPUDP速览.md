@@ -125,7 +125,7 @@ ESTABLISHED **----发送FIN---->** FIN_WAIT_1 **----收到对方对上个FIN的A
 
 1.3.2 被动断开：
 
-ESTABLISHED **----收到对方FIN---->** CLOSE_WAIT **----发送对上个FIN的ACK, 发送自己的FIN---->** LAST_ACK **----收到对方的ACK，关闭 ---->** CLOSED
+ESTABLISHED **----收到对方FIN，发送ACK---->** CLOSE_WAIT`（在close_wait状态发送完之前还没发完的报文）` **----发送自己的FIN---->** LAST_ACK **----收到对方的ACK，关闭 ---->** CLOSED
 
 <br>
 
