@@ -243,10 +243,13 @@ MSS：最大分段大小
 
 - 仍然超时： ssthresh = cwnd/2，cwnd = 1MSS ，进入慢启动
 - 仍旧收到重复的ACK：cwnd + 1
-- 收到新的ACK：推出快速恢复，进入拥塞避免状态，将cwnd设置为之前的sshthresh的值。
+- 收到新的ACK：退出快速恢复，进入拥塞避免状态，将cwnd设置为之前的sshthresh的值。
 
 
 <br>
+
+关于拥塞避免的各个状态：https://blog.csdn.net/itmacar/article/details/12278769 <br>
+
 
 # 常见疑问
 
@@ -306,7 +309,7 @@ MSS：最大分段大小
    * ACK机制
    * 重传
 
-8. 各个状态作用
-	CLOSE WAIT https://huoding.com/2016/01/19/488
-	TIME WAIT https://huoding.com/2013/12/31/316
+8. 各个状态作用:
+	* CLOSE WAIT https://huoding.com/2016/01/19/488 
+	* TIME WAIT https://huoding.com/2013/12/31/316
 
