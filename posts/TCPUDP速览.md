@@ -242,7 +242,8 @@ MSS：最大分段大小
 若：
 
 - 仍然超时： ssthresh = cwnd/2，cwnd = 1MSS ，进入慢启动
-- 快速重传的报文段被ACK： 进入拥塞控制阶段
+- 仍旧收到重复的ACK：cwnd + 1
+- 收到新的ACK：推出快速恢复，进入拥塞避免状态，将cwnd设置为之前的sshthresh的值。
 
 
 <br>
