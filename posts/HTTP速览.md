@@ -524,7 +524,7 @@ openssl rsa -in cliu8siteprivate.key -pubout -outcliu8sitepublic.pem
 
 #### 4.2 SSL剥离攻击
 
-中间人攻击者在劫持了客户端与服务端的HTTP会话后，将HTTP页面里面所有的https://超链接都换成http://，用户在点击相应的链接时，是使用HTTP协议来进行访问；这样，就算服务器对相应的URL只支持HTTPS链接，但中间人一样可以和服务建立HTTPS连接之后，将数据使用HTTP协议转发给客户端，实现会话劫持。
+中间人攻击者在劫持了客户端与服务端的HTTP会话后，将HTTP页面里面所有的`https://`超链接都换成`http://`，用户在点击相应的链接时，是使用HTTP协议来进行访问；这样，就算服务器对相应的URL只支持HTTPS链接，但中间人一样可以和服务建立HTTPS连接之后，将数据使用HTTP协议转发给客户端，实现会话劫持。
 
 
 
