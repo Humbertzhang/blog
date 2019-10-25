@@ -21,5 +21,11 @@ Backend Developer in MuxiStudio @ CCNU Wuhan China
 
 ## Readings
 
+记录不错的博客文章与书籍.
+
 ### Redis
-[为什么Redis使用单线程模型](https://draveness.me/whys-the-design-redis-single-thread)
+[为什么Redis使用单线程模型](https://draveness.me/whys-the-design-redis-single-thread)  <br>
+
+
+### Golang
+[Goroutine调度模型解析+Goroutine池](https://taohuawu.club/high-performance-implementation-of-goroutine-pool) <br>
