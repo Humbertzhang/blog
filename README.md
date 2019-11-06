@@ -29,3 +29,7 @@ Backend Developer in MuxiStudio @ CCNU Wuhan China
 
 ### Golang
 [Goroutine调度模型解析+Goroutine池](https://taohuawu.club/high-performance-implementation-of-goroutine-pool) <br>
+
+
+### 设计模式
+[控制反转与依赖注入](https://www.zhihu.com/question/32108444/answer/309208647)
